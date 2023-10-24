@@ -8,6 +8,7 @@ import SignInScreen from "./src/screens/SignInScreen";
 import { Colors } from "./src/utils/Colors";
 import SignUpScreen from "./src/screens/SignUpScreen";
 import GradeSelectionScreen from "./src/screens/GradeSelectionScreen";
+import ProvinceSelectionScreen from "./src/screens/ProvinceSelectionScreen";
 
 export default function App() {
   return (
@@ -20,7 +21,8 @@ export default function App() {
         {/* <WelcomeScreen /> */}
         {/* <SignInScreen /> */}
         {/* <SignUpScreen /> */}
-        <GradeSelectionScreen />
+        {/* <GradeSelectionScreen /> */}
+        <ProvinceSelectionScreen />
       </SafeAreaView>
     </PaperProvider>
   );

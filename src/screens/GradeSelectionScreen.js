@@ -1,4 +1,10 @@
-import { FlatList, StyleSheet, View, TouchableOpacity } from "react-native";
+import {
+  FlatList,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import React, { useState } from "react";
 import { Text } from "react-native-paper";
 import {
@@ -22,28 +28,29 @@ const GradeSelectionScreen = () => {
   };
   return (
     <View style={styles.container}>
-      <Text variant="headlineLarge" style={styles.headingText}>
-        What's your grade?
-      </Text>
-
-      <FlatList
-        style={styles.flatlistStyle}
-        data={GradeSectionMainData}
-        showsVerticalScrollIndicator={false}
-        nestedScrollEnabled={true}
-        renderItem={({ item, index }) => {
-          return <GradeSelectionsCard title={item} onPress={showVisibility} />;
-        }}
-      />
-      <View style={styles.btnContainer}>
-        <CustomButton
-          title={"Sign up"}
-          onPress={() => console.log("sign in pressed")}
+      <ScrollView contentContainerStyle={{ paddingBottom: 30 }}>
+        <Text variant="headlineLarge" style={styles.headingText}>
+          What's your grade?
+        </Text>
+        <FlatList
+          style={styles.flatlistStyle}
+          data={GradeSectionMainData}
+          showsVerticalScrollIndicator={false}
+          nestedScrollEnabled={true}
+          renderItem={({ item, index }) => {
+            return <GradeSelectionsCard title={item} />;
+          }}
         />
-        <TouchableOpacity>
-          <Text style={styles.skipText}>Skip</Text>
-        </TouchableOpacity>
-      </View>
+        <View style={styles.btnContainer}>
+          <CustomButton
+            title={"Sign up"}
+            onPress={() => console.log("sign in pressed")}
+          />
+          <TouchableOpacity>
+            <Text style={styles.skipText}>Skip</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     </View>
   );
 };
@@ -60,14 +67,14 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   flatlistStyle: {
-    height: hp("68%"),
+    // height: hp("68%"),
   },
   btnContainer: {
     alignContent: "center",
     justifyContent: "center",
     alignItems: "center",
     height: hp("15%"),
-
+    marginTop: hp("18%"),
     justifyContent: "space-between",
   },
   skipText: {

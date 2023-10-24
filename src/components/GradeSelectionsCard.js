@@ -12,6 +12,7 @@ import SelectionsMiniCard from "./SelectionsMiniCard";
 
 const GradeSelectionsCard = (props) => {
   const [showGrade, setShowGrade] = useState(false);
+  const [selected, setSelected] = useState("");
   const GradeSectionData = [
     {
       image: require("../assets/color.png"),
@@ -37,8 +38,13 @@ const GradeSelectionsCard = (props) => {
         onPress={() => setShowGrade(!showGrade)}
       >
         <Text style={styles.textStyle}>{props.title}</Text>
-        <FontAwesome name="chevron-down" size={22} color={Colors.Payne_Gray} />
+        <FontAwesome
+          name={showGrade ? "chevron-up" : "chevron-down"}
+          size={22}
+          color={Colors.Payne_Gray}
+        />
       </TouchableOpacity>
+
       {showGrade && (
         <View style={styles.selectionsStyle}>
           <FlatList
@@ -46,7 +52,12 @@ const GradeSelectionsCard = (props) => {
             numColumns={2}
             renderItem={({ item, index }) => {
               return (
-                <SelectionsMiniCard image={item.image} title={item.title} />
+                <SelectionsMiniCard
+                  image={item.image}
+                  title={item.title}
+                  onPress={(txt) => setSelected(txt)}
+                  selected={selected}
+                />
               );
             }}
           />
@@ -61,7 +72,7 @@ export default GradeSelectionsCard;
 const styles = StyleSheet.create({
   container: {
     width: wp("92%"),
-    height: hp("10%"),
+    // height: hp("10%"),
     alignSelf: "center",
     backgroundColor: Colors.Anti_flash_white1,
     marginTop: hp("2%"),
@@ -77,6 +88,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     borderRadius: wp("2%"),
+    zIndex: -100,
   },
   textStyle: {
     fontSize: Typography.FONT_SIZE_18,
@@ -87,5 +99,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     flexDirection: "row",
     justifyContent: "space-between",
+    zIndex: +100,
   },
 });

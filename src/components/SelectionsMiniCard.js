@@ -1,36 +1,43 @@
-import { StyleSheet, TouchableOpacity, Image } from "react-native";
 import React from "react";
+import { StyleSheet, TouchableOpacity, Image } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import * as Typography from "../utils/typography";
-import { Colors } from "../utils/Colors";
 import { Text } from "react-native-paper";
+import { Colors } from "../utils/Colors";
+import * as Typography from "../utils/typography";
 
 const SelectionsMiniCard = (props) => {
+  const { selected, title, image, onPress } = props;
+
+  const backgroundColor =
+    selected === title ? Colors.Nebula_Blue : Colors.Platinum;
+  const justifyContent = props.image == null ? "center" : "space-between";
+
   return (
-    <TouchableOpacity style={styles.touchContainer}>
-      <Image source={props.image} style={styles.imageStyle} />
-      <Text style={styles.textStyle}>{props.title}</Text>
+    <TouchableOpacity
+      style={[styles.touchContainer, { backgroundColor, justifyContent }]}
+      onPress={() => onPress(title)}
+    >
+      {image && <Image source={image} style={styles.imageStyle} />}
+      <Text style={styles.textStyle}>{title}</Text>
     </TouchableOpacity>
   );
 };
 
-export default SelectionsMiniCard;
-
 const styles = StyleSheet.create({
   touchContainer: {
     flexDirection: "row",
-    backgroundColor: Colors.Platinum,
     width: wp("40%"),
     height: hp("10%"),
-    justifyContent: "space-between",
-    paddingHorizontal: wp("7%"),
-    shadowColor: "#000",
+    paddingHorizontal: wp("6%"),
     borderRadius: wp("2%"),
     alignItems: "center",
     margin: wp("1%"),
+    shadowColor: "#000",
+    justifyContent: "space-between",
+    backgroundColor: Colors.Platinum,
   },
   textStyle: {
     fontSize: Typography.FONT_SIZE_16,
@@ -40,3 +47,5 @@ const styles = StyleSheet.create({
     height: wp("7%"),
   },
 });
+
+export default SelectionsMiniCard;
