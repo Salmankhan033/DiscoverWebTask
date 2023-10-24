@@ -7,6 +7,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import SignInScreen from "./src/screens/SignInScreen";
 import { Colors } from "./src/utils/Colors";
 import SignUpScreen from "./src/screens/SignUpScreen";
+import GradeSelectionScreen from "./src/screens/GradeSelectionScreen";
 
 export default function App() {
   return (
@@ -17,8 +18,9 @@ export default function App() {
           barStyle={"dark-content"}
         />
         {/* <WelcomeScreen /> */}
-        <SignInScreen />
+        {/* <SignInScreen /> */}
         {/* <SignUpScreen /> */}
+        <GradeSelectionScreen />
       </SafeAreaView>
     </PaperProvider>
   );

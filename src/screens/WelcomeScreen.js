@@ -32,7 +32,7 @@ const WelcomeScreen = () => {
       <View style={styles.btnContainer}>
         <CustomButton
           title={"Sign up"}
-          onPress={() => console.log("sign in pressed")}
+          onPress={() => console.log("Sign in pressed")}
         />
         <TouchableOpacity>
           <Text style={styles.skipText}>Skip</Text>
