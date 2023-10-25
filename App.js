@@ -9,6 +9,7 @@ import { Colors } from "./src/utils/Colors";
 import SignUpScreen from "./src/screens/SignUpScreen";
 import GradeSelectionScreen from "./src/screens/GradeSelectionScreen";
 import ProvinceSelectionScreen from "./src/screens/ProvinceSelectionScreen";
+import ExploreScreen from "./src/screens/ExploreScreen";
 
 export default function App() {
   return (
@@ -18,11 +19,8 @@ export default function App() {
           backgroundColor={Colors.Anti_flash_white}
           barStyle={"dark-content"}
         />
+        <ExploreScreen />
         {/* <WelcomeScreen /> */}
-        {/* <SignInScreen /> */}
-        {/* <SignUpScreen /> */}
-        {/* <GradeSelectionScreen /> */}
-        <ProvinceSelectionScreen />
       </SafeAreaView>
     </PaperProvider>
   );
@@ -32,7 +30,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.Anti_flash_white,
-    // alignItems: 'center',
+    alignItems: "center",
     // justifyContent: 'center',
   },
 });

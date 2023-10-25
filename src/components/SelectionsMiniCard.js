@@ -12,16 +12,26 @@ const SelectionsMiniCard = (props) => {
   const { selected, title, image, onPress } = props;
 
   const backgroundColor =
-    selected === title ? Colors.Nebula_Blue : Colors.Platinum;
-  const justifyContent = props.image == null ? "center" : "space-between";
+    props.style && selected !== title
+      ? Colors.white
+      : selected === title
+      ? Colors.Nebula_Blue
+      : Colors.Platinum;
 
+  const justifyContent = props.image == null ? "center" : "space-between";
   return (
     <TouchableOpacity
-      style={[styles.touchContainer, { backgroundColor, justifyContent }]}
+      style={
+        props.style
+          ? [props.style, { backgroundColor, justifyContent }]
+          : [styles.touchContainer, { backgroundColor, justifyContent }]
+      }
       onPress={() => onPress(title)}
     >
       {image && <Image source={image} style={styles.imageStyle} />}
-      <Text style={styles.textStyle}>{title}</Text>
+      <Text style={props.textStyle ? props.textStyle : styles.textStyle}>
+        {title}
+      </Text>
     </TouchableOpacity>
   );
 };
@@ -35,7 +45,7 @@ const styles = StyleSheet.create({
     borderRadius: wp("2%"),
     alignItems: "center",
     margin: wp("1%"),
-    shadowColor: "#000",
+    shadowColor: Colors.black,
     justifyContent: "space-between",
     backgroundColor: Colors.Platinum,
   },

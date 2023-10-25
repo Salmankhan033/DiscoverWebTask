@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     color: Colors.Payne_Gray,
     textAlign: "center",
     paddingTop: hp("1%"),
-    width: wp("70%"),
+    width: wp("80%"),
   },
   btnContainer: {
     alignContent: "center",
