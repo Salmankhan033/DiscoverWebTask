@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   container: {
     width: wp("92%"),
     alignSelf: "center",
-    // marginTop: hp("10%"),
+    marginBottom: hp("3%"),
   },
   filterContainer: {
     flexDirection: "row",

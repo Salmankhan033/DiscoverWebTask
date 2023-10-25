@@ -20,7 +20,6 @@ export default function App() {
           barStyle={"dark-content"}
         />
         <ExploreScreen />
-        {/* <WelcomeScreen /> */}
       </SafeAreaView>
     </PaperProvider>
   );

@@ -12,6 +12,7 @@ import * as Typography from "../utils/typography";
 const InstitutionsComponents = (props) => {
   return (
     <Card
+      elevation={0.15}
       contentStyle={styles.cardStyle}
       style={{
         alignSelf: "center",

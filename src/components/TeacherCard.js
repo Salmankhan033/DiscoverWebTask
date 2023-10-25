@@ -11,6 +11,7 @@ import * as Typography from "../utils/typography";
 const TeacherCard = (props) => {
   return (
     <Card
+      elevation={0.15}
       contentStyle={styles.cardStyle}
       style={{
         alignSelf: "flex-start",
@@ -44,12 +45,12 @@ const styles = StyleSheet.create({
     borderRadius: wp("3%"),
     shadowColor: Colors.Payne_Gray,
     shadowOffset: {
-      width: -10,
+      width: 0,
       height: 4,
     },
     shadowOpacity: 0.1,
     shadowRadius: 5.46,
-    elevation: 5,
+    // elevation: 2,
   },
   imageStyle: {
     width: wp("30%"),
