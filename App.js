@@ -10,17 +10,18 @@ import SignUpScreen from "./src/screens/SignUpScreen";
 import GradeSelectionScreen from "./src/screens/GradeSelectionScreen";
 import ProvinceSelectionScreen from "./src/screens/ProvinceSelectionScreen";
 import ExploreScreen from "./src/screens/ExploreScreen";
+import Navigations from "./src/utils/Navigations";
 
 export default function App() {
   return (
     <PaperProvider>
-      <SafeAreaView style={styles.container}>
-        <StatusBar
-          backgroundColor={Colors.Anti_flash_white}
-          barStyle={"dark-content"}
-        />
-        <ExploreScreen />
-      </SafeAreaView>
+      {/* <SafeAreaView style={styles.container}> */}
+      <StatusBar
+        backgroundColor={Colors.Anti_flash_white}
+        barStyle={"dark-content"}
+      />
+      <Navigations />
+      {/* </SafeAreaView> */}
     </PaperProvider>
   );
 }

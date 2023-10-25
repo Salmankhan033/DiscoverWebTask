@@ -17,7 +17,7 @@ import { Colors } from "../utils/Colors";
 import CustomTextInput from "../components/CustomTextInput";
 import CustomButton from "../components/CustomButton";
 
-const SignUpScreen = () => {
+const SignUpScreen = (props) => {
   return (
     <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
@@ -52,7 +52,7 @@ const SignUpScreen = () => {
         <View style={styles.btnView}>
           <CustomButton
             title={"Sign In"}
-            onPress={() => console.log("sign in pressed")}
+            onPress={() => props.navigation.navigate("GradeSelectionScreen")}
           />
           <View style={styles.textView}>
             <Text>Don’t have account?</Text>

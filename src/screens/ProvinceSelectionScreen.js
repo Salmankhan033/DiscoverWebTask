@@ -17,7 +17,7 @@ import GradeSelectionsCard from "../components/GradeSelectionsCard";
 import CustomButton from "../components/CustomButton";
 import SelectionsMiniCard from "../components/SelectionsMiniCard";
 
-const ProvinceSelectionScreen = () => {
+const ProvinceSelectionScreen = (props) => {
   const [showGrade, setShowGrade] = useState(false);
   const [selected, setSelected] = useState("");
   const ProvinceSectionData = [
@@ -66,7 +66,7 @@ const ProvinceSelectionScreen = () => {
         <View style={styles.btnContainer}>
           <CustomButton
             title={"Sign up"}
-            onPress={() => console.log("sign in pressed")}
+            onPress={() => props.navigation.navigate("ExploreScreen")}
           />
           <TouchableOpacity>
             <Text style={styles.skipText}>Skip</Text>

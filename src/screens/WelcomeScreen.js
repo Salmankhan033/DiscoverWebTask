@@ -16,7 +16,7 @@ import CustomButton from "../components/CustomButton";
 import * as Typography from "../utils/typography";
 import { Colors } from "../utils/Colors";
 
-const WelcomeScreen = () => {
+const WelcomeScreen = (props) => {
   return (
     <View style={styles.container}>
       <Image
@@ -32,7 +32,7 @@ const WelcomeScreen = () => {
       <View style={styles.btnContainer}>
         <CustomButton
           title={"Sign up"}
-          onPress={() => console.log("Sign in pressed")}
+          onPress={() => props.navigation.navigate("SignInScreen")}
         />
         <TouchableOpacity>
           <Text style={styles.skipText}>Skip</Text>

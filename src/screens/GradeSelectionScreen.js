@@ -16,7 +16,7 @@ import { Colors } from "../utils/Colors";
 import GradeSelectionsCard from "../components/GradeSelectionsCard";
 import CustomButton from "../components/CustomButton";
 
-const GradeSelectionScreen = () => {
+const GradeSelectionScreen = (props) => {
   const GradeSectionMainData = [
     "Grade  1 - 5",
     "Grade  6 - 9",
@@ -44,7 +44,7 @@ const GradeSelectionScreen = () => {
         <View style={styles.btnContainer}>
           <CustomButton
             title={"Sign up"}
-            onPress={() => console.log("sign in pressed")}
+            onPress={() => props.navigation.navigate("ProvinceSelectionScreen")}
           />
           <TouchableOpacity>
             <Text style={styles.skipText}>Skip</Text>
