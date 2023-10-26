@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -16,8 +16,46 @@ import * as Typography from "../utils/typography";
 import { Colors } from "../utils/Colors";
 import CustomTextInput from "../components/CustomTextInput";
 import CustomButton from "../components/CustomButton";
+import { HelperText } from "react-native-paper";
+import * as yup from "yup";
+
+const validationSchema = yup.object().shape({
+  name: yup.string().required("Name is required"),
+  email: yup.string().email("Invalid email").required("Email is required"),
+  password: yup.string().required("Password is required"),
+});
 
 const SignUpScreen = (props) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    validationSchema
+      .validate(formData, { abortEarly: false })
+      .then(() => {
+        // Validation passed, submit the form or take appropriate action
+        props.navigation.navigate("GradeSelectionScreen");
+        console.log("Form is valid");
+        setErrors({});
+      })
+      .catch((validationErrors) => {
+        // Validation failed, update the error state
+        const newErrors = {};
+        validationErrors.inner.forEach((error) => {
+          newErrors[error.path] = error.message;
+        });
+        setErrors(newErrors);
+      });
+    // if(errors=={}){
+    //
+    // }
+  };
+
   return (
     <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
@@ -31,31 +69,35 @@ const SignUpScreen = (props) => {
             value={1233}
             heading={"Name"}
             isPassword={false}
-            onTextChange={(text) => console.log(text)}
+            onTextChange={(text) => setFormData({ ...formData, name: text })}
           />
+          {errors.name && <Text style={styles.Errortxt}>{errors.name}</Text>}
           <CustomTextInput
             placeHolder="name@example.com"
             value={1233}
             heading={"Email address"}
             isPassword={false}
-            onTextChange={(text) => console.log(text)}
+            onTextChange={(text) => setFormData({ ...formData, email: text })}
           />
+          {errors.email && <Text style={styles.Errortxt}>{errors.email}</Text>}
           <CustomTextInput
             placeHolder=" ********"
             value={1233}
             isPassword={true}
             showPassword={false}
             heading={"Password"}
-            onTextChange={(text) => console.log(text)}
+            onTextChange={(text) =>
+              setFormData({ ...formData, password: text })
+            }
           />
+          {errors.password && (
+            <Text style={styles.Errortxt}>{errors.password}</Text>
+          )}
         </View>
         <View style={styles.btnView}>
-          <CustomButton
-            title={"Sign In"}
-            onPress={() => props.navigation.navigate("GradeSelectionScreen")}
-          />
+          <CustomButton title={"Sign In"} onPress={() => validateForm()} />
           <View style={styles.textView}>
-            <Text>Don’t have account?</Text>
+            <Text>Don't have account?</Text>
             <TouchableOpacity>
               <Text style={styles.signupTxt}>{` Sign In`}</Text>
             </TouchableOpacity>
@@ -91,5 +133,11 @@ const styles = StyleSheet.create({
   },
   signupTxt: {
     color: Colors.Nebula_Blue,
+  },
+  Errortxt: {
+    color: "red",
+    alignSelf: "center",
+    width: wp("90%"),
+    marginTop: hp(-2),
   },
 });
