@@ -1,4 +1,4 @@
-import { StyleSheet, View, TouchableOpacity, FlatList } from "react-native";
+import { StyleSheet, View, TouchableOpacity, FlatList, SafeAreaView } from "react-native";
 import React, { useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import {
@@ -32,7 +32,7 @@ const GradeSelectionsCard = (props) => {
     },
   ];
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <TouchableOpacity
         style={styles.touchContainer}
         onPress={() => setShowGrade(!showGrade)}
@@ -63,7 +63,7 @@ const GradeSelectionsCard = (props) => {
           />
         </View>
       )}
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -75,8 +75,9 @@ const styles = StyleSheet.create({
     // height: hp("10%"),
     alignSelf: "center",
     backgroundColor: Colors.Anti_flash_white1,
-    marginTop: hp("2%"),
+    // marginTop: hp("2%"),
     borderRadius: wp("3%"),
+    paddingTop:hp("2%")
   },
   touchContainer: {
     backgroundColor: Colors.Anti_flash_white1,
@@ -91,7 +92,9 @@ const styles = StyleSheet.create({
     zIndex: -100,
   },
   textStyle: {
-    fontSize: Typography.FONT_SIZE_18,
+    fontSize: Typography.FONT_SIZE_15,
+    color:Colors.Payne_Gray,
+    fontFamily:'Exo-SemiBold'
   },
   selectionsStyle: {
     height: hp("24%"),

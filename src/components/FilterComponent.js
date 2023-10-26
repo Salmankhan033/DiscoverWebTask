@@ -125,18 +125,22 @@ const styles = StyleSheet.create({
   filterContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    width: wp("90%"),
+    width: wp("91%"),
     alignSelf: "center",
     alignItems: "center",
+    paddingRight:wp("5 %")
   },
   headerText: {
-    fontSize: Typography.FONT_SIZE_20,
+    fontSize: Typography.FONT_SIZE_18,
+    color:Colors.Charcoal,
+    fontFamily:'Exo-SemiBold',
   },
   titleText: {
     fontSize: Typography.FONT_SIZE_12,
-    fontFamily: Typography.FONT_WEIGHT_REGULAR_500,
     width: wp("90%"),
     alignSelf: "center",
+    color:Colors.Payne_Gray,
+    fontFamily:'Exo-SemiBold',
   },
   areaComponent: {
     flexDirection: "row",
@@ -156,6 +160,7 @@ const styles = StyleSheet.create({
     marginVertical: hp("1%"),
   },
   textStyle: {
-    fontSize: Typography.FONT_SIZE_16,
+    fontSize: Typography.FONT_SIZE_15,
+    fontFamily:'Exo-Regular'
   },
 });

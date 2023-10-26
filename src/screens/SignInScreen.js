@@ -74,8 +74,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     paddingVertical: hp("1%"),
     justifyContent: "center",
+    fontFamily:'Exo-Regular'
   },
   signupTxt: {
     color: Colors.Nebula_Blue,
+    fontFamily:'Exo-Regular'
   },
 });

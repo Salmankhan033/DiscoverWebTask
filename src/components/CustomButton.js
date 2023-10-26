@@ -24,16 +24,18 @@ export default CustomButton;
 
 const styles = StyleSheet.create({
   buttonStyle: {
-    width: wp("60%"),
+    width: wp("70%"),
     height: hp("8%"),
     backgroundColor: Colors.Nebula_Blue,
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "center",
     borderRadius: wp("2.5%"),
+
   },
   btnText: {
-    fontSize: Typography.FONT_SIZE_20,
-    fontWeight: Typography.FONT_WEIGHT_REGULAR_500,
+    fontSize: Typography.FONT_SIZE_18,
+    paddingTop:hp(1),
+    fontFamily:'Exo-SemiBold'
   },
 });

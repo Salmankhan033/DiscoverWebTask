@@ -17,6 +17,7 @@ import * as Typography from "../utils/typography";
 import { Colors } from "../utils/Colors";
 
 const WelcomeScreen = (props) => {
+
   return (
     <View style={styles.container}>
       <Image
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   textContainer: {
-    width: wp("70%"),
+    // width: wp("70%"),
     height: hp("20%"),
     alignSelf: "center",
     alignItems: "center",
@@ -63,16 +64,17 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: Typography.FONT_SIZE_20,
-    fontWeight: Typography.FONT_WEIGHT_REGULAR_500,
     color: Colors.CharcoalCharcoal,
+    fontFamily:'Exo-Bold'
   },
   bodyText: {
-    fontSize: Typography.FONT_SIZE_18,
+    fontSize: Typography.FONT_SIZE_15,
     // fontWeight: Typography.FONT_WEIGHT_REGULAR_500,
     color: Colors.Payne_Gray,
     textAlign: "center",
     paddingTop: hp("1%"),
-    width: wp("80%"),
+    // width: wp("80%"),
+     fontFamily:'Exo-SemiBold'
   },
   btnContainer: {
     alignContent: "center",
@@ -83,6 +85,7 @@ const styles = StyleSheet.create({
   },
   skipText: {
     color: Colors.Nebula_Blue,
-    fontSize: Typography.FONT_SIZE_18,
+    fontSize: Typography.FONT_SIZE_15,
+    fontFamily:'Exo-Regular'
   },
 });

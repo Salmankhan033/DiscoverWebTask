@@ -23,8 +23,8 @@ const ExploreHeader = () => {
           <Text style={styles.headerText}>Good evening!</Text>
           <Text style={styles.subHeaderText}>Hardline Scott</Text>
         </View>
-        <View style={styles.image}>
-          <Image source={require("../assets/Propic.png")} />
+        <View>
+          <Image source={require("../assets/Propic.png")} style={styles.image}/>
         </View>
       </View>
     </View>
@@ -36,7 +36,7 @@ export default ExploreHeader;
 const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: "row",
-    paddingHorizontal: wp("5%"),
+    paddingHorizontal: wp("4%"),
     justifyContent: "space-between",
     paddingTop: hp("3%"),
     paddingBottom: wp("5%"),
@@ -46,11 +46,18 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontWeight: "600",
-    fontSize: 32,
+    fontSize: Typography.FONT_SIZE_24,
+    color:Colors.Charcoal,
+    fontFamily:'Exo-Bold',
   },
   subHeaderText: {
     fontWeight: "600",
-    fontSize: 20,
+    fontSize: Typography.FONT_SIZE_20,
     color: Colors.Payne_Gray,
+    fontFamily:'Exo-SemiBold',
+  },
+  image:{
+    height:hp("10%"),
+    width:wp("20%")
   },
 });

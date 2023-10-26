@@ -4,6 +4,7 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
+  SafeAreaView,
 } from "react-native";
 import React, { useState } from "react";
 import { Text } from "react-native-paper";
@@ -33,7 +34,7 @@ const ProvinceSelectionScreen = (props) => {
   ];
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <ScrollView
         contentContainerStyle={{ paddingBottom: 30 }}
         showsVerticalScrollIndicator={false}
@@ -73,7 +74,7 @@ const ProvinceSelectionScreen = (props) => {
           </TouchableOpacity>
         </View>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -81,13 +82,14 @@ export default ProvinceSelectionScreen;
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: hp("2%"),
+    paddingTop: hp("5%"),
   },
   headingText: {
     color: Colors.Charcoal,
     width: wp("90%"),
     alignSelf: "center",
     height: hp("10%"),
+    fontFamily:'Exo-SemiBold',
   },
   flatlistContainer: {
     backgroundColor: Colors.Anti_flash_white1,
@@ -98,6 +100,7 @@ const styles = StyleSheet.create({
     width: wp("90%"),
     alignSelf: "center",
     paddingBottom: hp("1.5%"),
+    fontFamily:'Exo-SemiBold',
   },
   flatlistStyle: {
     // height: hp("68%"),

@@ -1,4 +1,4 @@
-import { FlatList, ScrollView, StyleSheet, Text, View } from "react-native";
+import { FlatList, SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
 import {
   widthPercentageToDP as wp,
@@ -31,6 +31,7 @@ const ExploreScreen = () => {
     setTeachers(filteredTeachers);
   };
   return (
+    <SafeAreaView style={{flex:1,paddingTop:hp("5%")}}>
     <ScrollView
       style={{ flexGrow: 1 }}
       showsVerticalScrollIndicator={false}
@@ -58,6 +59,7 @@ const ExploreScreen = () => {
           style={{
             // height: hp("35%"),
             paddingBottom: hp("5%"),
+            paddingLeft:hp("2.5%")
           }}
           ItemSeparatorComponent={() => <View style={{ margin: wp("2%") }} />}
           renderItem={({ item, index }) => {
@@ -98,6 +100,7 @@ const ExploreScreen = () => {
         />
       </View>
     </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -106,10 +109,11 @@ export default ExploreScreen;
 const styles = StyleSheet.create({
   container: {
     alignSelf: "center",
-    width: wp("92%"),
+    // width: wp("92%"),
   },
   headerText: {
     fontSize: Typography.FONT_SIZE_20,
     height: hp("4%"),
+    fontFamily:'Exo-SemiBold'
   },
 });

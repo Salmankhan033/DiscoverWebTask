@@ -29,7 +29,7 @@ const SelectionsMiniCard = (props) => {
       onPress={() => onPress(title)}
     >
       {image && <Image source={image} style={styles.imageStyle} />}
-      <Text style={props.textStyle ? props.textStyle : styles.textStyle}>
+      <Text style={selected == title ?[ props.textStyle,{color:Colors.white,fontSize: Typography.FONT_SIZE_15,  fontFamily:'Exo-Regular',} ]: styles.textStyle}>
         {title}
       </Text>
     </TouchableOpacity>
@@ -50,7 +50,9 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.Platinum,
   },
   textStyle: {
-    fontSize: Typography.FONT_SIZE_16,
+    fontSize: Typography.FONT_SIZE_15,
+    color:Colors.Charcoal,
+    fontFamily:'Exo-Regular'
   },
   imageStyle: {
     width: wp("7%"),

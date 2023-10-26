@@ -1,18 +1,67 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 
-import { PaperProvider } from "react-native-paper";
-import WelcomeScreen from "./src/screens/WelcomeScreen";
-import { SafeAreaView } from "react-native-safe-area-context";
-import SignInScreen from "./src/screens/SignInScreen";
+import { PaperProvider, configureFonts, MD2LightTheme, useTheme, } from "react-native-paper";
+
 import { Colors } from "./src/utils/Colors";
-import SignUpScreen from "./src/screens/SignUpScreen";
-import GradeSelectionScreen from "./src/screens/GradeSelectionScreen";
-import ProvinceSelectionScreen from "./src/screens/ProvinceSelectionScreen";
-import ExploreScreen from "./src/screens/ExploreScreen";
 import Navigations from "./src/utils/Navigations";
+import { useFonts } from 'expo-font';
 
 export default function App() {
+  // let [fontsLoaded] = useFonts({
+  //   "Exo-Regular" : "./src/assets/fonts/Exo-Regular.ttf",
+  // })
+  const [loaded] = useFonts({
+    'Exo-Regular': require('./src/assets/fonts/Exo-Regular.ttf'),
+    'Exo-Bold': require('./src/assets/fonts/Exo-Bold.ttf'),
+    'Exo-SemiBold': require('./src/assets/fonts/Exo-SemiBold.ttf'),
+    "Roboto-Regular" : require('./src/assets/fonts/Roboto-Regular.ttf'),
+    "Roboto-Bold" : require('./src/assets/fonts/Roboto-Bold.ttf'),
+  });
+
+  // First, define base font that will be used across the app.
+  // For MD3 this will apply to all base typography variants:
+  // displaySmall, headlineMedium, titleLarge etc.
+
+  const baseFont = {
+    fontFamily: 'Exo-Regular',
+  };
+
+  const baseVariants = configureFonts({ config: baseFont });
+
+  // Then, define custom fonts for different variants
+
+  const customVariants = {
+    // Customize individual base variants:
+    displayMedium: {
+      ...baseVariants.displayMedium,
+      fontFamily: 'Exo-Regular',
+    },
+
+    // Add own tokens if required:
+    bold: {
+      ...baseVariants.bodyMedium,
+      fontFamily: 'Exo-Regular',
+    },
+  };
+
+  // Finally, merge base variants with your custom tokens
+  // and apply custom fonts to your theme.
+
+  const fonts = configureFonts({
+    config: {
+      ...baseVariants,
+      ...customVariants,
+    },
+  });
+
+
+  const theme = useTheme();
+
+  if (!loaded) {
+    return null;
+  }
+
   return (
     <PaperProvider>
       {/* <SafeAreaView style={styles.container}> */}

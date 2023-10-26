@@ -28,8 +28,8 @@ const TeacherCard = (props) => {
           ]}
         />
         <View style={styles.textView}>
-          <Text variant="titleMedium">{props.name}</Text>
-          <Text variant="bodyMedium">{props.subject}</Text>
+          <Text variant="titleMedium" style={{ fontFamily:'Exo-SemiBold'}}>{props.name}</Text>
+          <Text variant="bodyMedium" style={{ fontFamily:'Roboto-Regular'}}>{props.subject}</Text>
         </View>
       </Card.Content>
     </Card>

@@ -4,6 +4,7 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
+  SafeAreaView,
 } from "react-native";
 import React, { useState } from "react";
 import { Text } from "react-native-paper";
@@ -27,7 +28,7 @@ const GradeSelectionScreen = (props) => {
     console.warn(data);
   };
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={{ paddingBottom: 30 }}>
         <Text variant="headlineLarge" style={styles.headingText}>
           What's your grade?
@@ -51,7 +52,7 @@ const GradeSelectionScreen = (props) => {
           </TouchableOpacity>
         </View>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -59,12 +60,15 @@ export default GradeSelectionScreen;
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: hp("2%"),
+    paddingTop: hp("5%"),
   },
   headingText: {
     color: Colors.Charcoal,
     width: wp("90%"),
     alignSelf: "center",
+    // backgroundColor:'red'
+    fontFamily:'Exo-SemiBold',
+    fontSize:Typography.FONT_SIZE_20
   },
   flatlistStyle: {
     // height: hp("68%"),

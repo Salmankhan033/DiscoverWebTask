@@ -30,7 +30,7 @@ const InstitutionsComponents = (props) => {
           ]}
         />
         <View style={styles.textView}>
-          <Text variant="titleMedium">{props.name}</Text>
+          <Text variant="titleMedium"  style={{ fontFamily:'Exo-SemiBold'}}>{props.name}</Text>
           <View style={styles.ratingView}>
             <Rating
               type="custom"
@@ -42,7 +42,7 @@ const InstitutionsComponents = (props) => {
             />
             <Text variant="bodySmall">{props.rating} (413)</Text>
           </View>
-          <Text variant="titleSmall">Bio Science</Text>
+          <Text variant="titleSmall"  style={{ fontFamily:'Roboto-Bold'}}>Bio Science</Text>
           <Text variant="bodySmall" style={styles.bodyText}>
             {props.bodyText}
           </Text>
@@ -82,5 +82,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
     alignItems: "center",
   },
-  bodyText: {},
+  bodyText: {
+    fontFamily:'Roboto-Regular'
+  },
 });

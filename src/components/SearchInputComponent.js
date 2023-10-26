@@ -52,13 +52,23 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     flexDirection: "row",
-    height: hp("9%"),
+    // height: hp("9%"),
     width: wp("70%"),
     justifyContent: "space-between",
-    borderWidth: wp(".09%"),
+    // borderWidth: wp(".09%"),
     borderRadius: wp("3%"),
     alignItems: "center",
     backgroundColor: Colors.white,
+    paddingVertical:hp("0.5%"),
+    shadowColor: "#000",
+shadowOffset: {
+	width: 0,
+	height: 2,
+},
+shadowOpacity: 0.25,
+shadowRadius: 3.84,
+
+elevation: 5,
   },
   leftContainer: {
     width: wp("20%"),
@@ -66,11 +76,12 @@ const styles = StyleSheet.create({
   },
   input: {
     fontSize: Typography.FONT_SIZE_20,
-    height: hp("8%"),
+    // height: hp("7%"),
     width: wp("55%"),
     borderRadius: wp("3%"),
     marginLeft: 5,
     backgroundColor: Colors.white,
+    fontFamily:'Exo-Regular',
   },
   iconView: {
     backgroundColor: Colors.Nebula_Blue,
