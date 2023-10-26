@@ -1,22 +1,28 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet } from "react-native";
 
-import { PaperProvider, configureFonts, MD2LightTheme, useTheme, } from "react-native-paper";
+import {
+  PaperProvider,
+  configureFonts,
+  MD2LightTheme,
+  useTheme,
+} from "react-native-paper";
 
 import { Colors } from "./src/utils/Colors";
 import Navigations from "./src/utils/Navigations";
-import { useFonts } from 'expo-font';
+import { useFonts } from "expo-font";
+import BottomNavigations from "./src/utils/BottomNavigations";
 
 export default function App() {
   // let [fontsLoaded] = useFonts({
   //   "Exo-Regular" : "./src/assets/fonts/Exo-Regular.ttf",
   // })
   const [loaded] = useFonts({
-    'Exo-Regular': require('./src/assets/fonts/Exo-Regular.ttf'),
-    'Exo-Bold': require('./src/assets/fonts/Exo-Bold.ttf'),
-    'Exo-SemiBold': require('./src/assets/fonts/Exo-SemiBold.ttf'),
-    "Roboto-Regular" : require('./src/assets/fonts/Roboto-Regular.ttf'),
-    "Roboto-Bold" : require('./src/assets/fonts/Roboto-Bold.ttf'),
+    "Exo-Regular": require("./src/assets/fonts/Exo-Regular.ttf"),
+    "Exo-Bold": require("./src/assets/fonts/Exo-Bold.ttf"),
+    "Exo-SemiBold": require("./src/assets/fonts/Exo-SemiBold.ttf"),
+    "Roboto-Regular": require("./src/assets/fonts/Roboto-Regular.ttf"),
+    "Roboto-Bold": require("./src/assets/fonts/Roboto-Bold.ttf"),
   });
 
   // First, define base font that will be used across the app.
@@ -24,7 +30,7 @@ export default function App() {
   // displaySmall, headlineMedium, titleLarge etc.
 
   const baseFont = {
-    fontFamily: 'Exo-Regular',
+    fontFamily: "Exo-Regular",
   };
 
   const baseVariants = configureFonts({ config: baseFont });
@@ -35,13 +41,13 @@ export default function App() {
     // Customize individual base variants:
     displayMedium: {
       ...baseVariants.displayMedium,
-      fontFamily: 'Exo-Regular',
+      fontFamily: "Exo-Regular",
     },
 
     // Add own tokens if required:
     bold: {
       ...baseVariants.bodyMedium,
-      fontFamily: 'Exo-Regular',
+      fontFamily: "Exo-Regular",
     },
   };
 
@@ -54,7 +60,6 @@ export default function App() {
       ...customVariants,
     },
   });
-
 
   const theme = useTheme();
 
@@ -69,8 +74,8 @@ export default function App() {
         backgroundColor={Colors.Anti_flash_white}
         barStyle={"dark-content"}
       />
-      <Navigations />
-      {/* </SafeAreaView> */}
+      {/* <Navigations /> */}
+      <BottomNavigations />
     </PaperProvider>
   );
 }
