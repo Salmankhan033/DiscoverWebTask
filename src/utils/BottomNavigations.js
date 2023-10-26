@@ -13,20 +13,26 @@ import ExploreScreen from "../screens/ExploreScreen";
 import { Colors } from "./Colors";
 
 const Tab = createBottomTabNavigator();
-
+const FocusedTabLabel = ({ label, focused }) => (
+  <Text style={{ color: focused ? "blue" : "gray" }}>{label}</Text>
+);
 export default function BottomNavigations() {
   return (
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
           headerShown: false,
+          tabBarStyle: {
+            borderTopLeftRadius: 20, // Add top left border radius
+            borderTopRightRadius: 20,
+          },
         }}
         tabBar={({ navigation, state, descriptors, insets }) => (
           <BottomNavigation.Bar
             style={{
               backgroundColor: "white",
               borderTopLeftRadius: 20, // Add top left border radius
-              borderTopRightRadius: 20, // Add top right border radius
+              borderTopRightRadius: 20,
             }}
             navigationState={state}
             safeAreaInsets={insets}
@@ -72,16 +78,26 @@ export default function BottomNavigations() {
           name="ExploreScreen"
           component={ExploreScreen}
           options={{
-            tabBarLabel: "ExploreScreen",
             tabBarIcon: ({ focused }) => (
-              <Image
-                source={require("../assets/explore.png")}
-                style={{
-                  width: 26,
-                  height: 26,
-                  tintColor: focused ? Colors.Nebula_Blue : Colors.Charcoal,
-                }}
-              />
+              <View
+                style={{ width: wp("40%"), alignItems: "center", gap: wp(2) }}
+              >
+                <Image
+                  source={require("../assets/explore.png")}
+                  style={{
+                    width: 26,
+                    height: 26,
+                    tintColor: focused ? Colors.Nebula_Blue : Colors.Charcoal,
+                  }}
+                />
+                <Text
+                  style={{
+                    color: focused ? Colors.Nebula_Blue : Colors.Charcoal,
+                  }}
+                >
+                  ExploreScreen
+                </Text>
+              </View>
             ),
           }}
         />
@@ -89,16 +105,26 @@ export default function BottomNavigations() {
           name="Stream"
           component={Stream}
           options={{
-            tabBarLabel: "Stream",
             tabBarIcon: ({ focused }) => (
-              <Image
-                source={require("../assets/stream.png")}
-                style={{
-                  width: 26,
-                  height: 26,
-                  tintColor: focused ? Colors.Nebula_Blue : Colors.Charcoal,
-                }}
-              />
+              <View
+                style={{ width: wp("40%"), alignItems: "center", gap: wp(2) }}
+              >
+                <Image
+                  source={require("../assets/stream.png")}
+                  style={{
+                    width: 26,
+                    height: 26,
+                    tintColor: focused ? Colors.Nebula_Blue : Colors.Charcoal,
+                  }}
+                />
+                <Text
+                  style={{
+                    color: focused ? Colors.Nebula_Blue : Colors.Charcoal,
+                  }}
+                >
+                  Stream
+                </Text>
+              </View>
             ),
           }}
         />
@@ -106,16 +132,26 @@ export default function BottomNavigations() {
           name="ClassWork"
           component={ClassWork}
           options={{
-            tabBarLabel: "Settings",
             tabBarIcon: ({ focused }) => (
-              <Image
-                source={require("../assets/classwork.png")}
-                style={{
-                  width: 26,
-                  height: 26,
-                  tintColor: focused ? Colors.Nebula_Blue : Colors.Charcoal,
-                }}
-              />
+              <View
+                style={{ width: wp("40%"), alignItems: "center", gap: wp(2) }}
+              >
+                <Image
+                  source={require("../assets/classwork.png")}
+                  style={{
+                    width: 26,
+                    height: 26,
+                    tintColor: focused ? Colors.Nebula_Blue : Colors.Charcoal,
+                  }}
+                />
+                <Text
+                  style={{
+                    color: focused ? Colors.Nebula_Blue : Colors.Charcoal,
+                  }}
+                >
+                  ClassWork
+                </Text>
+              </View>
             ),
           }}
         />
