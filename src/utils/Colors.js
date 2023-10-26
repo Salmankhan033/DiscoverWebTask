@@ -9,4 +9,5 @@ export const Colors = {
   Granite_Gray: "#6d6363",
   white: "#ffffff",
   black: "#000",
+  red: "red",
 };

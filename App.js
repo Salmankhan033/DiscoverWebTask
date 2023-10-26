@@ -74,8 +74,8 @@ export default function App() {
         backgroundColor={Colors.Anti_flash_white}
         barStyle={"dark-content"}
       />
-      {/* <Navigations /> */}
-      <BottomNavigations />
+      <Navigations />
+      {/* <BottomNavigations /> */}
     </PaperProvider>
   );
 }

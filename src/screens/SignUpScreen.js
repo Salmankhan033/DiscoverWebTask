@@ -66,7 +66,7 @@ const SignUpScreen = (props) => {
         <View style={styles.inputView}>
           <CustomTextInput
             placeHolder="Your Name"
-            value={1233}
+            // value={1233}
             heading={"Name"}
             isPassword={false}
             onTextChange={(text) => setFormData({ ...formData, name: text })}
@@ -74,7 +74,7 @@ const SignUpScreen = (props) => {
           {errors.name && <Text style={styles.Errortxt}>{errors.name}</Text>}
           <CustomTextInput
             placeHolder="name@example.com"
-            value={1233}
+            // value={1233}
             heading={"Email address"}
             isPassword={false}
             onTextChange={(text) => setFormData({ ...formData, email: text })}
@@ -82,7 +82,7 @@ const SignUpScreen = (props) => {
           {errors.email && <Text style={styles.Errortxt}>{errors.email}</Text>}
           <CustomTextInput
             placeHolder=" ********"
-            value={1233}
+            // value={1233}
             isPassword={true}
             showPassword={false}
             heading={"Password"}
@@ -95,10 +95,12 @@ const SignUpScreen = (props) => {
           )}
         </View>
         <View style={styles.btnView}>
-          <CustomButton title={"Sign In"} onPress={() => validateForm()} />
+          <CustomButton title={"Sign Up"} onPress={() => validateForm()} />
           <View style={styles.textView}>
             <Text>Don't have account?</Text>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => props.navigation.navigate("SignInScreen")}
+            >
               <Text style={styles.signupTxt}>{` Sign In`}</Text>
             </TouchableOpacity>
           </View>
@@ -135,9 +137,10 @@ const styles = StyleSheet.create({
     color: Colors.Nebula_Blue,
   },
   Errortxt: {
-    color: "red",
+    color: Colors.red,
     alignSelf: "center",
     width: wp("90%"),
-    marginTop: hp(-2),
+    marginTop: hp("-1"),
+    marginBottom: hp("1%"),
   },
 });

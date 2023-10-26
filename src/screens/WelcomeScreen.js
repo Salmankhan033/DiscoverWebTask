@@ -17,7 +17,6 @@ import * as Typography from "../utils/typography";
 import { Colors } from "../utils/Colors";
 
 const WelcomeScreen = (props) => {
-
   return (
     <View style={styles.container}>
       <Image
@@ -33,9 +32,11 @@ const WelcomeScreen = (props) => {
       <View style={styles.btnContainer}>
         <CustomButton
           title={"Sign up"}
-          onPress={() => props.navigation.navigate("SignInScreen")}
+          onPress={() => props.navigation.navigate("SignUpScreen")}
         />
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => props.navigation.navigate("ExploreScreen")}
+        >
           <Text style={styles.skipText}>Skip</Text>
         </TouchableOpacity>
       </View>
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: Typography.FONT_SIZE_20,
     color: Colors.CharcoalCharcoal,
-    fontFamily:'Exo-Bold'
+    fontFamily: "Exo-Bold",
   },
   bodyText: {
     fontSize: Typography.FONT_SIZE_15,
@@ -74,7 +75,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     paddingTop: hp("1%"),
     // width: wp("80%"),
-     fontFamily:'Exo-SemiBold'
+    fontFamily: "Exo-SemiBold",
   },
   btnContainer: {
     alignContent: "center",
@@ -86,6 +87,6 @@ const styles = StyleSheet.create({
   skipText: {
     color: Colors.Nebula_Blue,
     fontSize: Typography.FONT_SIZE_15,
-    fontFamily:'Exo-Regular'
+    fontFamily: "Exo-Regular",
   },
 });

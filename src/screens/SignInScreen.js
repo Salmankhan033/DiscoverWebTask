@@ -5,7 +5,7 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import * as Typography from "../utils/typography";
+
 import { Colors } from "../utils/Colors";
 import CustomTextInput from "../components/CustomTextInput";
 import CustomButton from "../components/CustomButton";
@@ -24,16 +24,11 @@ const SignInScreen = (props) => {
   });
   const validateForm = async () => {
     try {
-      console.log("Form data before validation:", formData);
       await validationSchema.validate(formData, { abortEarly: false });
-      // Validation passed, handle the form data or take appropriate action
-      console.log("Form is valid:", formData);
-      props.navigation.navigate("SignUpScreen");
+      props.navigation.navigate("GradeSelectionScreen");
       setErrors({});
-      // Call your API or perform other actions with the valid form data
     } catch (validationErrors) {
       console.log("Validation errors:", validationErrors);
-      // Validation failed, update the error state
       const newErrors = {};
       validationErrors.inner.forEach((error) => {
         newErrors[error.path] = error.message;
@@ -52,7 +47,6 @@ const SignInScreen = (props) => {
         <View style={styles.inputView}>
           <CustomTextInput
             placeHolder="name@example.com"
-            value={1233}
             heading={"Email address"}
             isPassword={false}
             onTextChange={(text) => setFormData({ ...formData, email: text })}
@@ -60,7 +54,6 @@ const SignInScreen = (props) => {
           {errors.email && <Text style={styles.Errortxt}>{errors.email}</Text>}
           <CustomTextInput
             placeHolder=" ********"
-            value={1233}
             isPassword={true}
             showPassword={false}
             heading={"Password"}
@@ -76,7 +69,9 @@ const SignInScreen = (props) => {
           <CustomButton title={"Sign In"} onPress={() => validateForm()} />
           <View style={styles.textView}>
             <Text>Don't have account?</Text>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => props.navigation.navigate("SignUpScreen")}
+            >
               <Text style={styles.signupTxt}> Sign up</Text>
             </TouchableOpacity>
           </View>

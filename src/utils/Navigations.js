@@ -30,7 +30,7 @@ const Navigations = () => {
           name="ProvinceSelectionScreen"
           component={ProvinceSelectionScreen}
         />
-        <Stack.Screen name="ExploreScreen" component={ExploreScreen} />
+        <Stack.Screen name="ExploreScreen" component={BottomNavigation} />
       </Stack.Navigator>
     </NavigationContainer>
   );
