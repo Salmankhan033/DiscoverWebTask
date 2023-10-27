@@ -2,7 +2,6 @@ import { View } from "react-native";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { BottomNavigation, Text } from "react-native-paper";
 import WelcomeScreen from "../screens/WelcomeScreen";
 import SignInScreen from "../screens/SignInScreen";
 import SignUpScreen from "../screens/SignUpScreen";
@@ -10,6 +9,7 @@ import GradeSelectionScreen from "../screens/GradeSelectionScreen";
 import ProvinceSelectionScreen from "../screens/ProvinceSelectionScreen";
 import ExploreScreen from "../screens/ExploreScreen";
 import { SafeAreaView } from "react-native-safe-area-context";
+import BottomNavigations from "./BottomNavigations";
 const Navigations = () => {
   const Stack = createNativeStackNavigator();
   return (
@@ -30,7 +30,7 @@ const Navigations = () => {
           name="ProvinceSelectionScreen"
           component={ProvinceSelectionScreen}
         />
-        <Stack.Screen name="ExploreScreen" component={BottomNavigation} />
+        <Stack.Screen name="ExploreScreen" component={BottomNavigations} />
       </Stack.Navigator>
     </NavigationContainer>
   );
