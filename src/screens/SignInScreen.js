@@ -1,5 +1,12 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity,Platform } from "react-native";
-import React, { useState,useEffect } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  Platform,
+} from "react-native";
+import React, { useState, useEffect } from "react";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -31,10 +38,15 @@ const SignInScreen = (props) => {
   const opacity = useSharedValue(0);
   const imageOpacity = useSharedValue(0);
 
-
   useEffect(() => {
-    opacity.value = withTiming(1, { duration: 1000, easing: Easing.inOut(Easing.ease) });
-    imageOpacity.value =withTiming(1, { duration: 2000, easing: Easing.inOut(Easing.ease) });
+    opacity.value = withTiming(1, {
+      duration: 1000,
+      easing: Easing.inOut(Easing.ease),
+    });
+    imageOpacity.value = withTiming(1, {
+      duration: 2000,
+      easing: Easing.inOut(Easing.ease),
+    });
   }, []);
 
   const animatedStyle = useAnimatedStyle(() => {
@@ -66,10 +78,10 @@ const SignInScreen = (props) => {
   return (
     <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
       <Animated.View style={[styles.container, animatedStyle]}>
-      <Animated.Image
+        <Animated.Image
           source={require("../assets/signin.png")}
           style={[styles.imageStyle, imageStyle]}
-          resizeMode={'contain'}
+          resizeMode={"contain"}
         />
         <View style={styles.inputView}>
           <CustomTextInput
@@ -118,8 +130,8 @@ const styles = StyleSheet.create({
   },
   imageStyle: {
     alignSelf: "center",
-    width: Platform.OS === 'web' ? wp(60) : "100%",
-    height:Platform.OS === 'web' ? hp(30): hp(40),
+    width: Platform.OS === "web" ? wp(60) : "100%",
+    height: Platform.OS === "web" ? hp(30) : hp(40),
   },
   inputView: {
     // marginTop: hp("5%"),
@@ -135,11 +147,12 @@ const styles = StyleSheet.create({
     paddingVertical: hp("1%"),
     justifyContent: "center",
     fontFamily: "Exo-Regular",
+    alignItems: "center",
   },
   signupTxt: {
     color: Colors.Nebula_Blue,
-    fontSize: Platform.OS === 'web' ? "22px" : Typography.FONT_SIZE_18,
-    fontFamily:"Exo-SemiBold"
+    fontSize: Platform.OS === "web" ? "22px" : Typography.FONT_SIZE_18,
+    fontFamily: "Exo-SemiBold",
   },
   Errortxt: {
     color: "red",

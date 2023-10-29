@@ -1,7 +1,18 @@
-import React, { useState,useEffect } from "react";
-import { View, Image, Text, TouchableOpacity, StyleSheet, ScrollView , Platform} from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  Image,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  ScrollView,
+  Platform,
+} from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 import CustomTextInput from "../components/CustomTextInput";
 import CustomButton from "../components/CustomButton";
 import { HelperText } from "react-native-paper";
@@ -32,10 +43,15 @@ const SignUpScreen = (props) => {
   const opacity = useSharedValue(0);
   const imageOpacity = useSharedValue(0);
 
-
   useEffect(() => {
-    opacity.value = withTiming(1, { duration: 1000, easing: Easing.inOut(Easing.ease) });
-    imageOpacity.value =withTiming(1, { duration: 3000, easing: Easing.inOut(Easing.ease) });
+    opacity.value = withTiming(1, {
+      duration: 1000,
+      easing: Easing.inOut(Easing.ease),
+    });
+    imageOpacity.value = withTiming(1, {
+      duration: 3000,
+      easing: Easing.inOut(Easing.ease),
+    });
   }, []);
 
   const animatedStyle = useAnimatedStyle(() => {
@@ -70,11 +86,11 @@ const SignUpScreen = (props) => {
 
   return (
     <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
-         <Animated.View style={[styles.container, animatedStyle]}>
+      <Animated.View style={[styles.container, animatedStyle]}>
         <Animated.Image
           source={require("../assets/signup.png")}
-          style={[styles.imageStyle,imageStyle]}
-          resizeMode={'contain'}
+          style={[styles.imageStyle, imageStyle]}
+          resizeMode={"contain"}
         />
         <View style={styles.inputView}>
           <CustomTextInput
@@ -96,15 +112,21 @@ const SignUpScreen = (props) => {
             isPassword={true}
             showPassword={false}
             heading={"Password"}
-            onTextChange={(text) => setFormData({ ...formData, password: text })}
+            onTextChange={(text) =>
+              setFormData({ ...formData, password: text })
+            }
           />
-          {errors.password && <Text style={styles.Errortxt}>{errors.password}</Text>}
+          {errors.password && (
+            <Text style={styles.Errortxt}>{errors.password}</Text>
+          )}
         </View>
         <View style={styles.btnView}>
           <CustomButton title={"Sign Up"} onPress={() => validateForm()} />
           <View style={styles.textView}>
             <Text>Don't have an account?</Text>
-            <TouchableOpacity onPress={() => props.navigation.navigate("SignInScreen")}>
+            <TouchableOpacity
+              onPress={() => props.navigation.navigate("SignInScreen")}
+            >
               <Text style={styles.signupTxt}> Sign In</Text>
             </TouchableOpacity>
           </View>
@@ -122,8 +144,8 @@ const styles = StyleSheet.create({
   },
   imageStyle: {
     alignSelf: "center",
-    width: Platform.OS === 'web' ? wp(60) : "100%",
-    height:Platform.OS === 'web' ? hp(30): hp(40),
+    width: Platform.OS === "web" ? wp(60) : "100%",
+    height: Platform.OS === "web" ? hp(30) : hp(40),
   },
   inputView: {
     marginTop: hp("2%"),
@@ -136,11 +158,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     paddingVertical: hp("1%"),
     justifyContent: "center",
+    alignItems: "center",
   },
   signupTxt: {
     color: Colors.Nebula_Blue,
-    fontSize: Platform.OS === 'web' ? "22px" : Typography.FONT_SIZE_18,
-    fontFamily:"Exo-SemiBold"
+    fontSize: Platform.OS === "web" ? "22px" : Typography.FONT_SIZE_18,
+    fontFamily: "Exo-SemiBold",
   },
   Errortxt: {
     color: Colors.red,
