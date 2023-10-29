@@ -1,13 +1,5 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  SafeAreaView,
-  StatusBar,
-  TouchableOpacity,
-} from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
+import { View, Image, Text, TouchableOpacity, StyleSheet,Platform } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -15,13 +7,41 @@ import {
 import CustomButton from "../components/CustomButton";
 import * as Typography from "../utils/typography";
 import { Colors } from "../utils/Colors";
+import Animated, {
+  Easing,
+  withTiming,
+  useSharedValue,
+  useAnimatedStyle,
+  FadeIn, FadeOut 
+} from "react-native-reanimated";
 
 const WelcomeScreen = (props) => {
+  const opacity = useSharedValue(0);
+  const imageOpacity = useSharedValue(0);
+
+
+  useEffect(() => {
+    opacity.value = withTiming(1, { duration: 1000, easing: Easing.inOut(Easing.ease) });
+    imageOpacity.value =withTiming(1, { duration: 2000, easing: Easing.inOut(Easing.ease) });
+  }, []);
+
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      opacity: opacity.value,
+    };
+  });
+  const imageStyle = useAnimatedStyle(() => {
+    return {
+      opacity: imageOpacity.value,
+    };
+  });
+
   return (
-    <View style={styles.container}>
-      <Image
+    <Animated.View style={[styles.container, animatedStyle]}>
+      <Animated.Image
         source={require("../assets/MainImg.png")}
-        style={styles.imageStyle}
+        style={[styles.imageStyle, imageStyle]}
+        resizeMode="contain"
       />
       <View style={styles.textContainer}>
         <Text style={styles.headerText}>Let's find the "A" with us</Text>
@@ -33,6 +53,7 @@ const WelcomeScreen = (props) => {
         <CustomButton
           title={"Sign up"}
           onPress={() => props.navigation.navigate("SignUpScreen")}
+
         />
         <TouchableOpacity
           onPress={() => props.navigation.navigate("ExploreScreen")}
@@ -40,28 +61,25 @@ const WelcomeScreen = (props) => {
           <Text style={styles.skipText}>Skip</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </Animated.View>
   );
 };
 
-export default WelcomeScreen;
-
 const styles = StyleSheet.create({
   container: {
-    width: wp("100%"),
-    height: hp("100%"),
-    alignContent: "center",
-    paddingTop: hp("5%"),
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    padding: wp("5%"),
   },
   imageStyle: {
     alignSelf: "center",
+    width: "100%", // Make the image responsive
+    height: hp(40), // Make the image responsive
   },
   textContainer: {
-    // width: wp("70%"),
-    height: hp("20%"),
-    alignSelf: "center",
     alignItems: "center",
-    padding: wp("1%"),
+    padding: wp("2%"),
   },
   headerText: {
     fontSize: Typography.FONT_SIZE_20,
@@ -70,23 +88,21 @@ const styles = StyleSheet.create({
   },
   bodyText: {
     fontSize: Typography.FONT_SIZE_15,
-    // fontWeight: Typography.FONT_WEIGHT_REGULAR_500,
     color: Colors.Payne_Gray,
     textAlign: "center",
     paddingTop: hp("1%"),
-    // width: wp("80%"),
     fontFamily: "Exo-SemiBold",
   },
   btnContainer: {
-    alignContent: "center",
-    justifyContent: "center",
     alignItems: "center",
-    height: hp("15%"),
-    justifyContent: "space-between",
+    justifyContent: "center",
+    marginVertical: hp("3%"),
   },
   skipText: {
     color: Colors.Nebula_Blue,
-    fontSize: Typography.FONT_SIZE_15,
-    fontFamily: "Exo-Regular",
+    fontSize: Platform.OS === 'web' ? "22px" : Typography.FONT_SIZE_18,
+    fontFamily:"Exo-SemiBold"
   },
 });
+
+export default WelcomeScreen;

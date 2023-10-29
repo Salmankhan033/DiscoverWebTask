@@ -1,15 +1,21 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
+import { StyleSheet, Text, View, Image, TouchableOpacity,Platform } from "react-native";
+import React, { useState,useEffect } from "react";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-
+import Animated, {
+  Easing,
+  withTiming,
+  useSharedValue,
+  useAnimatedStyle,
+} from "react-native-reanimated";
 import { Colors } from "../utils/Colors";
 import CustomTextInput from "../components/CustomTextInput";
 import CustomButton from "../components/CustomButton";
 import * as yup from "yup";
+import * as Typography from "../utils/typography";
 
 const validationSchema = yup.object().shape({
   // name: yup.string().required("Name is required"),
@@ -22,6 +28,26 @@ const SignInScreen = (props) => {
     email: "",
     password: "",
   });
+  const opacity = useSharedValue(0);
+  const imageOpacity = useSharedValue(0);
+
+
+  useEffect(() => {
+    opacity.value = withTiming(1, { duration: 1000, easing: Easing.inOut(Easing.ease) });
+    imageOpacity.value =withTiming(1, { duration: 2000, easing: Easing.inOut(Easing.ease) });
+  }, []);
+
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      opacity: opacity.value,
+    };
+  });
+  const imageStyle = useAnimatedStyle(() => {
+    return {
+      opacity: imageOpacity.value,
+    };
+  });
+
   const validateForm = async () => {
     try {
       await validationSchema.validate(formData, { abortEarly: false });
@@ -39,10 +65,11 @@ const SignInScreen = (props) => {
 
   return (
     <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.container}>
-        <Image
+      <Animated.View style={[styles.container, animatedStyle]}>
+      <Animated.Image
           source={require("../assets/signin.png")}
-          style={styles.imageStyle}
+          style={[styles.imageStyle, imageStyle]}
+          resizeMode={'contain'}
         />
         <View style={styles.inputView}>
           <CustomTextInput
@@ -76,7 +103,7 @@ const SignInScreen = (props) => {
             </TouchableOpacity>
           </View>
         </View>
-      </View>
+      </Animated.View>
     </KeyboardAwareScrollView>
   );
 };
@@ -85,15 +112,19 @@ export default SignInScreen;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: hp("3%"),
+    flex: 1,
+    alignItems: "center",
+    padding: wp("5%"),
   },
   imageStyle: {
     alignSelf: "center",
+    width: Platform.OS === 'web' ? wp(60) : "100%",
+    height:Platform.OS === 'web' ? hp(30): hp(40),
   },
   inputView: {
-    marginTop: hp("5%"),
+    // marginTop: hp("5%"),
     height: hp("32%"),
-    justifyContent: "space-between",
+    // justifyContent: "space-between",
   },
   btnView: {
     height: hp("16%"),
@@ -107,12 +138,13 @@ const styles = StyleSheet.create({
   },
   signupTxt: {
     color: Colors.Nebula_Blue,
-    fontFamily: "Exo-Regular",
+    fontSize: Platform.OS === 'web' ? "22px" : Typography.FONT_SIZE_18,
+    fontFamily:"Exo-SemiBold"
   },
   Errortxt: {
     color: "red",
-    alignSelf: "center",
-    width: wp("90%"),
+    // alignSelf: "center",
+    // width: wp("90%"),
     marginTop: hp(-2),
   },
 });

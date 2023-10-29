@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity, Image } from "react-native";
+import { StyleSheet, TouchableOpacity, Image,Platform } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -28,8 +28,8 @@ const SelectionsMiniCard = (props) => {
       }
       onPress={() => onPress(title)}
     >
-      {image && <Image source={image} style={styles.imageStyle} />}
-      <Text style={selected == title ?[ props.textStyle,{color:Colors.white,fontSize: Typography.FONT_SIZE_15,  fontFamily:'Exo-Regular',} ]: styles.textStyle}>
+      {image && <Image source={image} style={styles.imageStyle} resizeMode='contain'/>}
+      <Text style={selected == title ?[ props.textStyle,{color:Colors.white,fontSize:Platform.OS === 'web' ? "20px" : Typography.FONT_SIZE_15,  fontFamily:'Exo-Regular',} ]: styles.textStyle}>
         {title}
       </Text>
     </TouchableOpacity>
@@ -39,10 +39,10 @@ const SelectionsMiniCard = (props) => {
 const styles = StyleSheet.create({
   touchContainer: {
     flexDirection: "row",
-    width: wp("40%"),
-    height: hp("10%"),
-    paddingHorizontal: wp("6%"),
-    borderRadius: wp("2%"),
+    width: Platform.OS === 'web' ? wp("13%") :  wp("40%"),
+    height: Platform.OS === 'web' ? hp("8.5%") :  hp("10%"),
+    paddingHorizontal:Platform.OS === 'web' ? hp("3%"): wp("6%"),
+    borderRadius:Platform.OS === 'web' ? wp("1%") : wp("2%"),
     alignItems: "center",
     margin: wp("1%"),
     shadowColor: Colors.black,
@@ -50,13 +50,13 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.Platinum,
   },
   textStyle: {
-    fontSize: Typography.FONT_SIZE_15,
+    fontSize:Platform.OS === 'web' ? "20px" : Typography.FONT_SIZE_15,
     color:Colors.Charcoal,
     fontFamily:'Exo-Regular'
   },
   imageStyle: {
-    width: wp("7%"),
-    height: wp("7%"),
+    width: Platform.OS === 'web' ? wp("3%") :  wp("7%"),
+    height: Platform.OS === 'web' ? wp("3%") :  wp("7%"),
   },
 });
 

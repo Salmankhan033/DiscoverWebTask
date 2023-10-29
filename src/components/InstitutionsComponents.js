@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Platform } from "react-native";
 import { Avatar, Button, Card, Text } from "react-native-paper";
 import { Rating, AirbnbRating } from "react-native-ratings";
 import {
@@ -8,6 +8,7 @@ import {
 } from "react-native-responsive-screen";
 import { Colors } from "../utils/Colors";
 import * as Typography from "../utils/typography";
+const isWeb = Platform.OS === "web";
 
 const InstitutionsComponents = (props) => {
   return (
@@ -15,10 +16,10 @@ const InstitutionsComponents = (props) => {
       elevation={0.15}
       contentStyle={styles.cardStyle}
       style={{
-        alignSelf: "center",
-        alignItems: "center",
-        width: wp("92%"),
-        justifyContent: "center",
+        width: isWeb ? "40%" : wp("92%"),
+        alignSelf:'center',
+        justifyContent:'space-between',
+        marginRight: isWeb ? "12%" : null
       }}
     >
       <Card.Content style={{ flexDirection: "row" }}>
@@ -30,7 +31,7 @@ const InstitutionsComponents = (props) => {
           ]}
         />
         <View style={styles.textView}>
-          <Text variant="titleMedium"  style={{ fontFamily:'Exo-SemiBold'}}>{props.name}</Text>
+          <Text variant="titleMedium" style={{ fontFamily: 'Exo-SemiBold', color:Colors.Payne_Gray }}>{props.name}</Text>
           <View style={styles.ratingView}>
             <Rating
               type="custom"
@@ -38,11 +39,10 @@ const InstitutionsComponents = (props) => {
               ratingBackgroundColor={Colors.white}
               ratingCount={5}
               imageSize={12}
-              //   style={{ padding: 10 }}
             />
             <Text variant="bodySmall">{props.rating} (413)</Text>
           </View>
-          <Text variant="titleSmall"  style={{ fontFamily:'Roboto-Bold'}}>Bio Science</Text>
+          <Text variant="titleSmall" style={{ fontFamily: 'Roboto-Bold', color:Colors.Payne_Gray }}>Bio Science</Text>
           <Text variant="bodySmall" style={styles.bodyText}>
             {props.bodyText}
           </Text>
@@ -53,12 +53,13 @@ const InstitutionsComponents = (props) => {
 };
 
 export default InstitutionsComponents;
+
 const styles = StyleSheet.create({
   cardStyle: {
     justifyContent: "center",
     backgroundColor: Colors.white,
-    width: wp("92%"),
-    borderRadius: wp("3%"),
+    // width: isWeb ? "50%" : wp("92%"), 
+    borderRadius:isWeb? wp("0.5%"): wp("3%"),
     shadowColor: Colors.Payne_Gray,
     shadowOffset: {
       width: -10,
@@ -67,15 +68,15 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 5.46,
     elevation: 5,
+    
   },
   imageStyle: {
-    width: wp("40%"),
-    height: wp("40%"),
+    width: isWeb ? wp("6%") : wp("40%"), 
+    height: isWeb ? wp("6%") : wp("40%"), 
   },
   textView: {
     marginLeft: wp("1.2%"),
-
-    width: wp("40%"),
+    width: isWeb ? "60%" : wp("40%"),
   },
   ratingView: {
     flexDirection: "row",
@@ -83,6 +84,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   bodyText: {
-    fontFamily:'Roboto-Regular'
+    fontFamily: 'Roboto-Regular',
+    color:Colors.Payne_Gray
   },
 });

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Platform } from "react-native";
 import { Avatar, Button, Card, Text } from "react-native-paper";
 import {
   widthPercentageToDP as wp,
@@ -7,6 +7,7 @@ import {
 } from "react-native-responsive-screen";
 import { Colors } from "../utils/Colors";
 import * as Typography from "../utils/typography";
+const isWeb = Platform.OS === "web";
 
 const TeacherCard = (props) => {
   return (
@@ -28,8 +29,8 @@ const TeacherCard = (props) => {
           ]}
         />
         <View style={styles.textView}>
-          <Text variant="titleMedium" style={{ fontFamily:'Exo-SemiBold'}}>{props.name}</Text>
-          <Text variant="bodyMedium" style={{ fontFamily:'Roboto-Regular'}}>{props.subject}</Text>
+          <Text variant="titleMedium" style={{ fontFamily: 'Exo-SemiBold', color:Colors.Payne_Gray }}>{props.name}</Text>
+          <Text variant="bodyMedium" style={{ fontFamily: 'Roboto-Regular' , color:Colors.Payne_Gray}}>{props.subject}</Text>
         </View>
       </Card.Content>
     </Card>
@@ -37,12 +38,15 @@ const TeacherCard = (props) => {
 };
 
 export default TeacherCard;
+
 const styles = StyleSheet.create({
   cardStyle: {
+    width: isWeb? wp("8%") : null,
+    height: isWeb? wp("14%") : null,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: Colors.white,
-    borderRadius: wp("3%"),
+    borderRadius:isWeb? wp("0.5%"): wp("3%"),
     shadowColor: Colors.Payne_Gray,
     shadowOffset: {
       width: 0,
@@ -50,13 +54,16 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.1,
     shadowRadius: 5.46,
-    // elevation: 2,
+    elevation: 2,
   },
   imageStyle: {
-    width: wp("30%"),
-    height: wp("30%"),
+    width: isWeb ? wp("6%") : wp("30%"), 
+    height: isWeb ? wp("6%") : wp("30%"), 
+    alignSelf:'center'
   },
   textView: {
     margin: wp("1%"),
+    width: isWeb? wp("7%") : null,
   },
 });
+

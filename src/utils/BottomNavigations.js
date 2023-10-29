@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image,Platform} from "react-native";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text, BottomNavigation } from "react-native-paper";
@@ -14,6 +14,7 @@ import { useTheme } from "react-native-paper";
 import * as Typography from "../utils/typography";
 
 const Tab = createBottomTabNavigator();
+const isWeb = Platform.OS === "web";
 export default function BottomNavigations() {
   const theme = useTheme();
   theme.colors.secondaryContainer = "transperent";
@@ -32,6 +33,7 @@ export default function BottomNavigations() {
             borderTopRightRadius: wp("5%"),
             position: "absolute",
             overflow: "hidden",
+            // height:isWeb ? "10%": null
           }}
           navigationState={state}
           safeAreaInsets={insets}
@@ -79,21 +81,27 @@ export default function BottomNavigations() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View
-              style={{ width: wp("40%"), alignItems: "center", gap: wp(2) }}
+              style={{ 
+                width: wp("40%"), 
+                alignItems: "center", 
+                // gap: wp(2),
+                height:hp("10%"),
+               }}
             >
               <Image
                 source={require("../assets/explore.png")}
                 style={{
-                  width: wp("8%"),
-                  height: wp("8%"),
+                  width: isWeb ? wp('2%'): wp("8%"),
+                  height:isWeb ? wp('2%'):  wp("8%"),
                   tintColor: focused ? Colors.Nebula_Blue : Colors.Charcoal,
                 }}
+                resizeMode='contain'
               />
               <Text
                 style={{
                   color: focused ? Colors.Nebula_Blue : Colors.Charcoal,
                   fontFamily: "Exo-Regular",
-                  fontSize: Typography.FONT_SIZE_13,
+                  fontSize: isWeb ? "20px": Typography.FONT_SIZE_13,
                 }}
               >
                 Explore
@@ -108,13 +116,15 @@ export default function BottomNavigations() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View
-              style={{ width: wp("40%"), alignItems: "center", gap: wp(2) }}
+              style={{
+                 width: wp("40%"), alignItems: "center"
+                 }}
             >
               <Image
                 source={require("../assets/stream.png")}
                 style={{
-                  width: wp("8%"),
-                  height: wp("8%"),
+                  width: isWeb ? wp('2%'): wp("8%"),
+                  height:isWeb ? wp('2%'):  wp("8%"),
                   tintColor: focused ? Colors.Nebula_Blue : Colors.Charcoal,
                 }}
               />
@@ -122,7 +132,7 @@ export default function BottomNavigations() {
                 style={{
                   color: focused ? Colors.Nebula_Blue : Colors.Charcoal,
                   fontFamily: "Exo-Regular",
-                  fontSize: Typography.FONT_SIZE_13,
+                  fontSize: isWeb ? "20px": Typography.FONT_SIZE_13,
                 }}
               >
                 Stream
@@ -137,13 +147,16 @@ export default function BottomNavigations() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View
-              style={{ width: wp("40%"), alignItems: "center", gap: wp(2) }}
+              style={{            
+                width: wp("40%"), 
+                alignItems: "center", 
+               }}
             >
               <Image
                 source={require("../assets/classwork.png")}
                 style={{
-                  width: wp("8%"),
-                  height: wp("8%"),
+                  width: isWeb ? wp('2%'): wp("8%"),
+                  height:isWeb ? wp('2%'):  wp("8%"),
                   tintColor: focused ? Colors.Nebula_Blue : Colors.Charcoal,
                 }}
               />
@@ -151,7 +164,7 @@ export default function BottomNavigations() {
                 style={{
                   color: focused ? Colors.Nebula_Blue : Colors.Charcoal,
                   fontFamily: "Exo-Regular",
-                  fontSize: Typography.FONT_SIZE_13,
+                  fontSize: isWeb ? "20px": Typography.FONT_SIZE_13,
                 }}
               >
                 ClassWork

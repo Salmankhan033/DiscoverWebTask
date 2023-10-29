@@ -1,4 +1,4 @@
-import { StyleSheet, View, TouchableOpacity, FlatList, SafeAreaView } from "react-native";
+import { StyleSheet, View, TouchableOpacity, FlatList, SafeAreaView, Platform } from "react-native";
 import React, { useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import {
@@ -71,25 +71,27 @@ export default GradeSelectionsCard;
 
 const styles = StyleSheet.create({
   container: {
-    width: wp("92%"),
+    width: Platform.OS === 'web' ? wp("34%") : wp("92%"),
     // height: hp("10%"),
     alignSelf: "center",
-    backgroundColor: Colors.Anti_flash_white1,
-    // marginTop: hp("2%"),
-    borderRadius: wp("3%"),
-    paddingTop:hp("2%")
+    // backgroundColor: Colors.Anti_flash_white1,
+    // // marginTop: hp("2%"),
+    // borderRadius: wp("3%"),
+    // paddingTop:hp("2%")
   },
   touchContainer: {
     backgroundColor: Colors.Anti_flash_white1,
-    width: wp("92%"),
+ 
+    width: Platform.OS === 'web' ? wp("34%") : wp("92%"),
     height: hp("10%"),
     paddingHorizontal: wp("4%"),
     alignSelf: "center",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    borderRadius: wp("2%"),
+    borderRadius:Platform.OS === 'web' ? "10px" : wp("2%"),
     zIndex: -100,
+    marginTop:hp(1)
   },
   textStyle: {
     fontSize: Typography.FONT_SIZE_15,
@@ -98,7 +100,7 @@ const styles = StyleSheet.create({
   },
   selectionsStyle: {
     height: hp("24%"),
-    width: wp("85%"),
+    width: Platform.OS === 'web' ? wp("31%") : wp("85%"),
     alignSelf: "center",
     flexDirection: "row",
     justifyContent: "space-between",

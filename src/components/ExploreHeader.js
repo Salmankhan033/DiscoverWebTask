@@ -4,6 +4,7 @@ import {
   Image,
   TouchableOpacity,
   TextInput,
+  Platform
 } from "react-native";
 import React from "react";
 import {
@@ -17,17 +18,15 @@ import SearchInputComponent from "./SearchInputComponent";
 
 const ExploreHeader = () => {
   return (
-    <View>
       <View style={styles.headerContainer}>
         <View style={styles.textContainer}>
           <Text style={styles.headerText}>Good evening!</Text>
           <Text style={styles.subHeaderText}>Hardline Scott</Text>
         </View>
         <View>
-          <Image source={require("../assets/Propic.png")} style={styles.image}/>
+          <Image source={require("../assets/Propic.png")} style={styles.image} resizeMode='contain' />
         </View>
       </View>
-    </View>
   );
 };
 
@@ -36,7 +35,7 @@ export default ExploreHeader;
 const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: "row",
-    paddingHorizontal: wp("4%"),
+    paddingLeft: wp("4%"),
     justifyContent: "space-between",
     paddingTop: hp("3%"),
     paddingBottom: wp("5%"),
@@ -45,7 +44,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   headerText: {
-    fontWeight: "600",
+    // fontWeight: "600",
     fontSize: Typography.FONT_SIZE_24,
     color:Colors.Charcoal,
     fontFamily:'Exo-Bold',
@@ -57,7 +56,7 @@ const styles = StyleSheet.create({
     fontFamily:'Exo-SemiBold',
   },
   image:{
-    height:hp("10%"),
-    width:wp("20%")
+    height:Platform.OS === 'web' ? hp("20%") :hp("10%"),
+    width: Platform.OS === 'web' ? wp('20'):wp("20%")
   },
 });

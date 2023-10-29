@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   ScrollView,
   SafeAreaView,
+  Platform
 } from "react-native";
 import React, { useState } from "react";
 import { Text } from "react-native-paper";
@@ -16,6 +17,13 @@ import * as Typography from "../utils/typography";
 import { Colors } from "../utils/Colors";
 import GradeSelectionsCard from "../components/GradeSelectionsCard";
 import CustomButton from "../components/CustomButton";
+import Animated, {
+  Easing,
+  withTiming,
+  useSharedValue,
+  useAnimatedStyle,
+  FadeIn, FadeOut 
+} from "react-native-reanimated";
 
 const GradeSelectionScreen = (props) => {
   const GradeSectionMainData = [
@@ -60,15 +68,18 @@ export default GradeSelectionScreen;
 
 const styles = StyleSheet.create({
   container: {
+    flex:1,
     paddingTop: hp("5%"),
+  
   },
   headingText: {
     color: Colors.Charcoal,
-    width: wp("90%"),
+    width: Platform.OS === 'web' ? wp("35%") : wp("90%"),
     alignSelf: "center",
     // backgroundColor:'red'
     fontFamily:'Exo-SemiBold',
-    fontSize:Typography.FONT_SIZE_20
+    fontSize:Typography.FONT_SIZE_20,
+    marginBottom:hp('2%')
   },
   flatlistStyle: {
     // height: hp("68%"),
@@ -83,6 +94,7 @@ const styles = StyleSheet.create({
   },
   skipText: {
     color: Colors.Nebula_Blue,
-    fontSize: Typography.FONT_SIZE_18,
+    fontSize: Platform.OS === 'web' ? "22px" : Typography.FONT_SIZE_18,
+    fontFamily:"Exo-SemiBold"
   },
 });

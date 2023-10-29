@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View,Platform } from "react-native";
 import React from "react";
 import {
   widthPercentageToDP as wp,
@@ -20,10 +20,12 @@ const CustomTextInput = (props) => {
           value={props.value}
           onChangeText={(text) => props.onTextChange(text)}
           style={styles.inputStyle}
-          underlineStyle={{ backgroundColor: Colors.white }}
+          underlineColor="transparent" // Change to set underline as transparent
           secureTextEntry={!props.showPassword}
           right={
-            <TextInput.Icon icon={props.showPassword ? "eye" : "eye-off"} />
+            <TextInput.Icon icon={props.showPassword ? "eye" : "eye-off"} style={{
+              marginTop: Platform.OS === 'web'? hp('5%') : null
+            }}/>
           }
         />
       ) : (
@@ -32,9 +34,7 @@ const CustomTextInput = (props) => {
           value={props.value}
           onChangeText={(text) => props.onTextChange(text)}
           style={styles.inputStyle}
-          underlineStyle={{ backgroundColor: Colors.white }}
-
-          //   right={<TextInput.Icon icon={true ? "eye" : "eye-off"} />}
+          underlineColor="transparent" // Change to set underline as transparent
         />
       )}
     </View>
@@ -44,21 +44,23 @@ const CustomTextInput = (props) => {
 export default CustomTextInput;
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    marginBottom: hp("2%"),
+    width: Platform.OS === 'web' ? "350px":null
+  },
   textStyle: {
-    paddingLeft: wp("5%"),
-    fontFamily:'Exo-Regular'
+    fontFamily: "Exo-Regular",
+    color:Colors.Payne_Gray
   },
   inputStyle: {
     backgroundColor: Colors.white,
-    width: wp("90%"),
-    height: hp("8%"),
-    marginVertical: hp("2%"),
+    width: Platform.OS === 'web' ? "350px": wp("90%"), // Responsive width for mobile
+    height:  Platform.OS === 'web' ? "50px": hp("8%"), // Responsive height for mobile
     alignSelf: "center",
     shadowColor: Colors.black,
-    borderRadius: wp("2%"),
-    borderTopRightRadius: wp("2%"),
-    borderTopLeftRadius: wp("2%"),
+    borderRadius: Platform.OS === 'web' ? "10px": wp("2%"),
+    borderTopRightRadius:Platform.OS === 'web' ? "10px": wp("2%"),
+    borderTopLeftRadius:Platform.OS === 'web' ? "10px": wp("2%"),
     shadowOffset: {
       width: 0,
       height: 1,
@@ -66,6 +68,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
     elevation: 2,
-    fontFamily:'Exo-Regular'
+    fontFamily: "Exo-Regular",
+    justifyContent:'center',
+    paddingTop: Platform.OS === 'web'? hp("2%") : null
   },
 });

@@ -1,19 +1,27 @@
-import { StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
+import {
+  View,
+  Image,
+  TouchableOpacity,
+  Platform,
+  StyleSheet,
+} from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import { HelperText, Text } from "react-native-paper";
+import { Text } from "react-native-paper";
 import { Colors } from "../utils/Colors";
 import * as Typography from "../utils/typography";
-import SelectionFilterCard from "./SelectionFilterCard";
 import SelectionsMiniCard from "./SelectionsMiniCard";
+
+const isWeb = Platform.OS === "web";
 
 const FilterComponent = (props) => {
   const [selected, setSelected] = useState("");
   const [subjectselected, setSubjectSelected] = useState("");
   const [selectFilter, setSelectFilter] = useState(false);
+
   return (
     <View style={styles.container}>
       <View style={styles.filterContainer}>
@@ -22,9 +30,15 @@ const FilterComponent = (props) => {
         </Text>
         <TouchableOpacity onPress={() => setSelectFilter(!selectFilter)}>
           {selectFilter ? (
-            <Image source={require("../assets/filter_green.png")} />
+            <Image
+              source={require("../assets/filter_green.png")}
+              style={styles.filterImage}
+            />
           ) : (
-            <Image source={require("../assets/filter.png")} />
+            <Image
+              source={require("../assets/filter.png")}
+              style={styles.filterImage}
+            />
           )}
         </TouchableOpacity>
       </View>
@@ -52,7 +66,7 @@ const FilterComponent = (props) => {
             />
             <SelectionsMiniCard
               image={null}
-              title={"Districts "}
+              title={"Districts"}
               onPress={(txt) => setSelected(txt)}
               selected={selected}
               style={styles.cardStyle}
@@ -114,40 +128,37 @@ const FilterComponent = (props) => {
   );
 };
 
-export default FilterComponent;
-
 const styles = StyleSheet.create({
   container: {
-    width: wp("92%"),
+    width: isWeb ? "92%" : wp("92%"),
     alignSelf: "center",
     marginBottom: hp("3%"),
   },
   filterContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    width: wp("91%"),
+    width: isWeb ? "100%" : wp("91%"),
     alignSelf: "center",
     alignItems: "center",
-    paddingRight:wp("5 %")
+    // paddingLeft: isWeb ? wp(3.9): null
   },
   headerText: {
     fontSize: Typography.FONT_SIZE_18,
-    color:Colors.Charcoal,
-    fontFamily:'Exo-SemiBold',
+    color: Colors.Charcoal,
+    fontFamily: "Exo-SemiBold",
   },
   titleText: {
     fontSize: Typography.FONT_SIZE_12,
-    width: wp("90%"),
+    width: isWeb ? "90%" : wp("90%"),
     alignSelf: "center",
-    color:Colors.Payne_Gray,
-    fontFamily:'Exo-SemiBold',
+    color: Colors.Payne_Gray,
+    fontFamily: "Exo-SemiBold",
   },
   areaComponent: {
     flexDirection: "row",
     paddingVertical: hp("1%"),
     flexWrap: "wrap",
   },
-
   cardStyle: {
     alignSelf: "flex-start",
     paddingHorizontal: wp("4%"),
@@ -161,6 +172,14 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     fontSize: Typography.FONT_SIZE_15,
-    fontFamily:'Exo-Regular'
+    fontFamily: "Exo-Regular",
+  },
+  filterImage: {
+    height: isWeb ? hp("5%") : hp("4%"),
+    width: isWeb ? hp("5%") : hp("4%"),
+    resizeMode: "contain",
+    marginRight:isWeb ? wp("3%"): null,
   },
 });
+
+export default FilterComponent;
