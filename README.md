@@ -147,9 +147,10 @@ Make sure you have the following software installed:
        <td>Simple Sign In screen </td>
  </tr>
  <tr>
+    <td> <img src="https://github.com/Salmankhan033/DiscoverWebTask/assets/58082294/173b20ac-e1d0-4f0e-996e-14194da34dc9.jpg" alt="Drawing"  width="auto" height="auto"/> </td>
 <td> <img src="https://github.com/Salmankhan033/DiscoverWebTask/assets/58082294/44605eb9-e4b8-4fe3-8477-ef887e08cc38.jpg" alt="Drawing"  width="auto" height="auto"/> </td>
 <td> <img src="https://github.com/Salmankhan033/DiscoverWebTask/assets/58082294/ff0f4c57-207e-449d-84ff-08630ab26d12.jpg" alt="Drawing"  width="auto" height="auto"/> </td>
-<td> <img src="https://github.com/Salmankhan033/DiscoverWebTask/assets/58082294/173b20ac-e1d0-4f0e-996e-14194da34dc9.jpg" alt="Drawing"  width="auto" height="auto"/> </td>
+
 </tr></table>
 
 <table>
