@@ -5,8 +5,9 @@ Welcome to the documentation for My DiscoverWebTask App. This document will help
 ## Demo
 
 You can check out a  demo videos of the app 
-- [Demo IOS](https://drive.google.com/file/d/1DE_OMcyEbLtN_iIQv9S3yWMCkWcYNUZ_/view?usp=sharing)
-- [Demo Android](https://drive.google.com/file/d/1wu7ihpYaBDVLJirZQE21E2huPQmLoQtE/view?usp=sharing)
+- [IOS App](https://drive.google.com/file/d/1DE_OMcyEbLtN_iIQv9S3yWMCkWcYNUZ_/view?usp=sharing)
+- [Android App](https://drive.google.com/file/d/1wu7ihpYaBDVLJirZQE21E2huPQmLoQtE/view?usp=sharing)
+- [Web App](https://drive.google.com/file/d/1y4-RIMthpaWhxET0AebQQfTTWNgSuGV8/view?usp=sharing)
 
 
 
@@ -137,12 +138,58 @@ Make sure you have the following software installed:
 <td> <img src="https://github.com/Salmankhan033/DiscoverWebTask/assets/58082294/5fa9c319-71b8-4182-b9f7-5d0be3257956.jpg" alt="Drawing"  width="150" height="300"/> </td>
 </tr></table>
 
-
-
-
-
-
+### Web App Screenshots 
+<table>
+ <tr>
  
+   <td> Welcom screen</td>
+      <td> SignUp screen</td>
+       <td>Simple Sign In screen </td>
+ </tr>
+ <tr>
+<td> <img src="https://github.com/Salmankhan033/DiscoverWebTask/assets/58082294/44605eb9-e4b8-4fe3-8477-ef887e08cc38.jpg" alt="Drawing"  width="auto" height="auto"/> </td>
+<td> <img src="https://github.com/Salmankhan033/DiscoverWebTask/assets/58082294/ff0f4c57-207e-449d-84ff-08630ab26d12.jpg" alt="Drawing"  width="auto" height="auto"/> </td>
+<td> <img src="https://github.com/Salmankhan033/DiscoverWebTask/assets/58082294/173b20ac-e1d0-4f0e-996e-14194da34dc9.jpg" alt="Drawing"  width="auto" height="auto"/> </td>
+</tr></table>
+
+<table>
+
+
+
+
+ <tr>
+ 
+   <td>Grade Selection Screen</td>
+      <td>Grade Selection Screen</td>
+       <td>Expand Selection Screen  </td>
+       <td>Expand Selection Screen </td>
+ </tr>
+ <tr>
+<td> <img src="https://github.com/Salmankhan033/DiscoverWebTask/assets/58082294/a4eb2b43-e259-44a6-a80b-71d6a03b8311.jpg" alt="Drawing"   width="auto" height="auto"/> </td>
+<td> <img src="https://github.com/Salmankhan033/DiscoverWebTask/assets/58082294/4ec6a398-ebe2-49e0-83a2-9c0e38940146.jpg" alt="Drawing"   width="auto" height="auto"/> </td>
+<td> <img src="https://github.com/Salmankhan033/DiscoverWebTask/assets/58082294/2e633369-19af-4e12-a3d0-955cceff9ce3.jpg" alt="Drawing"  width="auto" height="auto"/> </td>
+<td> <img src="https://github.com/Salmankhan033/DiscoverWebTask/assets/58082294/2cce9600-1360-4274-8f8d-0ea1ac47499a.jpg" alt="Drawing"   width="auto" height="auto"/> </td>
+</tr></table>
+
+<table>
+ <tr>
+
+
+   <td>Explore Screen</td>
+      <td>Explore Screen</td>
+       <td>Explore Screen</td>
+       <td>Explore Screen</td>
+ </tr>
+ <tr>
+<td> <img src="https://github.com/Salmankhan033/DiscoverWebTask/assets/58082294/c443900d-3aa0-4c88-a49e-af95a62eea04.jpg" alt="Drawing"   width="auto" height="auto"/> </td>
+<td> <img src="https://github.com/Salmankhan033/DiscoverWebTask/assets/58082294/2c59fa94-5e65-48a2-817b-d5f98eb0e031.jpg" alt="Drawing"   width="auto" height="auto"/> </td>
+<td> <img src="https://github.com/Salmankhan033/DiscoverWebTask/assets/58082294/1d4e655b-88a7-4c91-9153-c382bb2fe94f.jpg" alt="Drawing"   width="auto" height="auto"/> </td>
+<td> <img src="https://github.com/Salmankhan033/DiscoverWebTask/assets/58082294/4bae2e8c-f1ca-435d-bc8d-ae9fac034527.jpg" alt="Drawing"   width="auto" height="auto"/> </td>
+</tr></table>
+
+
+
+
 
 
 
