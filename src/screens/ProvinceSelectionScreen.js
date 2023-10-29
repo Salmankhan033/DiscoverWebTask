@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   ScrollView,
   SafeAreaView,
-  Platform
+  Platform,
 } from "react-native";
 import React, { useState } from "react";
 import { Text } from "react-native-paper";
@@ -67,7 +67,7 @@ const ProvinceSelectionScreen = (props) => {
         </View>
         <View style={styles.btnContainer}>
           <CustomButton
-            title={"Sign up"}
+            title={"Next"}
             onPress={() => props.navigation.navigate("ExploreScreen")}
           />
           <TouchableOpacity>
@@ -84,27 +84,26 @@ export default ProvinceSelectionScreen;
 const styles = StyleSheet.create({
   container: {
     paddingTop: hp("5%"),
-    flex:1
+    flex: 1,
   },
   headingText: {
     color: Colors.Charcoal,
-    width: Platform.OS === 'web' ? wp("35%") : wp("90%"),
+    width: Platform.OS === "web" ? wp("35%") : wp("90%"),
     alignSelf: "center",
     height: hp("10%"),
-    fontFamily:'Exo-SemiBold',
+    fontFamily: "Exo-SemiBold",
   },
   flatlistContainer: {
     backgroundColor: Colors.Anti_flash_white1,
     paddingVertical: hp("3%"),
-    marginHorizontal:Platform.OS === 'web' ? wp("30%") :wp("3%")
-    
+    marginHorizontal: Platform.OS === "web" ? wp("30%") : wp("3%"),
   },
   innerHeadingText: {
     color: Colors.Payne_Gray,
-    width: Platform.OS === 'web' ? wp("35%") : wp("90%"),
+    width: Platform.OS === "web" ? wp("35%") : wp("90%"),
     alignSelf: "center",
     paddingBottom: hp("1.5%"),
-    fontFamily:'Exo-SemiBold',
+    fontFamily: "Exo-SemiBold",
   },
   flatlistStyle: {
     // height: hp("68%"),
@@ -120,7 +119,7 @@ const styles = StyleSheet.create({
   },
   skipText: {
     color: Colors.Nebula_Blue,
-    fontSize: Platform.OS === 'web' ? "22px" : Typography.FONT_SIZE_18,
-    fontFamily:"Exo-SemiBold"
+    fontSize: Platform.OS === "web" ? "22px" : Typography.FONT_SIZE_18,
+    fontFamily: "Exo-SemiBold",
   },
 });

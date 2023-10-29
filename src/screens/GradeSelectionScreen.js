@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   ScrollView,
   SafeAreaView,
-  Platform
+  Platform,
 } from "react-native";
 import React, { useState } from "react";
 import { Text } from "react-native-paper";
@@ -22,7 +22,8 @@ import Animated, {
   withTiming,
   useSharedValue,
   useAnimatedStyle,
-  FadeIn, FadeOut 
+  FadeIn,
+  FadeOut,
 } from "react-native-reanimated";
 
 const GradeSelectionScreen = (props) => {
@@ -52,7 +53,7 @@ const GradeSelectionScreen = (props) => {
         />
         <View style={styles.btnContainer}>
           <CustomButton
-            title={"Sign up"}
+            title={"Next"}
             onPress={() => props.navigation.navigate("ProvinceSelectionScreen")}
           />
           <TouchableOpacity>
@@ -68,18 +69,17 @@ export default GradeSelectionScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
+    flex: 1,
     paddingTop: hp("5%"),
-  
   },
   headingText: {
     color: Colors.Charcoal,
-    width: Platform.OS === 'web' ? wp("35%") : wp("90%"),
+    width: Platform.OS === "web" ? wp("35%") : wp("90%"),
     alignSelf: "center",
     // backgroundColor:'red'
-    fontFamily:'Exo-SemiBold',
-    fontSize:Typography.FONT_SIZE_20,
-    marginBottom:hp('2%')
+    fontFamily: "Exo-SemiBold",
+    fontSize: Typography.FONT_SIZE_20,
+    marginBottom: hp("2%"),
   },
   flatlistStyle: {
     // height: hp("68%"),
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   },
   skipText: {
     color: Colors.Nebula_Blue,
-    fontSize: Platform.OS === 'web' ? "22px" : Typography.FONT_SIZE_18,
-    fontFamily:"Exo-SemiBold"
+    fontSize: Platform.OS === "web" ? "22px" : Typography.FONT_SIZE_18,
+    fontFamily: "Exo-SemiBold",
   },
 });
